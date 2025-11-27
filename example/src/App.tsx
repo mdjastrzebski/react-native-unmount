@@ -12,15 +12,40 @@ export default function App() {
           style={styles.button}
           onPress={() => setIsActive((active) => !active)}
         >
-          <Text>{isActive ? 'Active' : 'Inactive'}</Text>
+          <Text style={styles.buttonText}>
+            {isActive ? 'Active' : 'Inactive'}
+          </Text>
         </Pressable>
 
-        <UnmountWrapper placeholderStyle={styles.placeholder}>
-          <View style={styles.heavy}>
-            <Text>Heavy Component</Text>
-          </View>
+        <UnmountWrapper
+          style={styles.wrapper}
+          placeholderStyle={styles.placeholder}
+        >
+          <HeavyComponent />
+        </UnmountWrapper>
+
+        <UnmountWrapper
+          style={styles.wrapper}
+          placeholderStyle={styles.placeholder}
+        >
+          <HeavyComponent />
+        </UnmountWrapper>
+
+        <UnmountWrapper
+          style={styles.wrapper}
+          placeholderStyle={styles.placeholder}
+        >
+          <HeavyComponent />
         </UnmountWrapper>
       </UnmountProvider>
+    </View>
+  );
+}
+
+function HeavyComponent() {
+  return (
+    <View style={styles.heavy}>
+      <Text style={styles.heavyText}>Heavy Component</Text>
     </View>
   );
 }
@@ -34,15 +59,32 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'lightblue',
     padding: 10,
-    marginBottom: 10,
+    marginBottom: 25,
     borderRadius: 5,
   },
+  buttonText: {
+    fontSize: 16,
+  },
   heavy: {
-    backgroundColor: 'darkgray',
+    width: '100%',
+    height: '175',
+    backgroundColor: '#333',
     padding: 20,
     borderRadius: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  heavyText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#aaa',
+  },
+  wrapper: {
+    alignSelf: 'stretch',
+    margin: 20,
+    marginVertical: 10,
   },
   placeholder: {
-    backgroundColor: 'lightgray',
+    backgroundColor: '#eee',
   },
 });

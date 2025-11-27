@@ -34,10 +34,11 @@
   "scripts": {
     "example": "yarn workspace react-native-unmount-example",
     "clean": "del-cli lib",
-    "prepare": "bob build",
+    "build": "bob build",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "release": "release-it --only-version"
+    "release": "release-it --only-version",
+    "validate": "yarn build && yarn typecheck && yarn lint"
   },
   "keywords": [
     "react-native",

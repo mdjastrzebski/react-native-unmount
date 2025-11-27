@@ -1,26 +1,33 @@
-# react-native-unmount
+# React Native Unmount
 
-Unmount inactive views to save memory
+Unmount inactive views to save memory!
 
 ## Installation
-
 
 ```sh
 npm install react-native-unmount
 ```
 
-
 ## Usage
 
+```tsx
+import { useIsFocused } from '@react-navigation/native';
+import { UnmountProvider, UnmountWrapper } from 'react-native-unmount';
 
-```js
-import { multiply } from 'react-native-unmount';
+function HomeScreen() {
+  // Use React Navigation or any other navigation library
+  const isActive = useIsFocused();
 
-// ...
-
-const result = await multiply(3, 7);
+  return (
+    <UnmountProvider isActive={isActive}>
+      <LightContent />
+      <UnmountWrapper>
+        <HeavyComponent />
+      </UnmountWrapper>
+    </UnmountProvider>
+  );
+}
 ```
-
 
 ## Contributing
 
